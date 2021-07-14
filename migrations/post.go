@@ -3,8 +3,9 @@ package migrations
 import "time"
 
 type Post struct {
-	Id        uint64    `json:"id" gorm:"primary_key"`
+	ID        uint64    `json:"id" gorm:"primary_key"`
 	Title     string    `json:"title"`
 	Body      string    `json:"body"`
-	Createdat time.Time `json:"createdat"`
+	CreatedAt time.Time `json:"created_at"`
+	UpdatedAt time.Time `json:"updated_at"`
 }

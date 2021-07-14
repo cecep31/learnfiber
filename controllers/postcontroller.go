@@ -3,10 +3,11 @@ package controllers
 import (
 	"github.com/cecep31/learnfiber/database"
 	"github.com/cecep31/learnfiber/migrations"
+	"github.com/cecep31/learnfiber/models"
 	"github.com/gofiber/fiber/v2"
 )
 
-func GetDataPost(c *fiber.Ctx) error {
+func GetDataPosts(c *fiber.Ctx) error {
 	var data []migrations.Post
 	db := database.Con()
 	db.Find(&data)
@@ -17,6 +18,21 @@ func GetDataPost(c *fiber.Ctx) error {
 	})
 }
 
-func AddDataPost() error {
+func AddDataPost(c *fiber.Ctx) error {
+	db := database.Con()
+	input := new(models.Post)
+
+	if err := c.BodyParser(input); err != nil {
+		return err
+	}
+
+	data := migrations.Post{Title: input.Title, Body: input.Body}
+	db.Create(&data)
+
+	return c.JSON(fiber.Map{
+		"success": true,
+		"message": "berhasil",
+		"data":    data,
+	})
 
 }
