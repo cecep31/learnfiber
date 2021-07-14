@@ -16,3 +16,7 @@ func GetDataPost(c *fiber.Ctx) error {
 		"data":    data,
 	})
 }
+
+func AddDataPost() error {
+
+}
