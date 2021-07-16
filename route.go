@@ -15,8 +15,12 @@ func SetupRoute(app *fiber.App) {
 	//api routeing
 	api := app.Group("/api")
 
-	api.Get("/post", controllers.GetDataPosts)
-	api.Post("/post", controllers.AddDataPost)
+	api.Get("/post", controllers.GetDataPosts).Use(jwtware.New(jwtware.Config{
+		SigningKey: []byte("pilput"),
+	}))
+	api.Post("/post", controllers.AddDataPost).Use(jwtware.New(jwtware.Config{
+		SigningKey: []byte("pilput"),
+	}))
 
 	//auth jwt
 	api.Use(jwtware.New(jwtware.Config{
