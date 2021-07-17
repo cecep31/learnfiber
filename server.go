@@ -23,6 +23,7 @@ func main() {
 	app.Use(recover.New())
 
 	//routing static file
+
 	SetupRoute(app)
 
 	log.Fatal(app.Listen(":3131"))
