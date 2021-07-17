@@ -4,8 +4,8 @@ import (
 	"fmt"
 
 	"github.com/cecep31/learnfiber/controllers"
+	"github.com/cecep31/learnfiber/middleware"
 	"github.com/gofiber/fiber/v2"
-	jwtware "github.com/gofiber/jwt/v2"
 )
 
 func ApiRoute(app *fiber.App) {
@@ -15,17 +15,8 @@ func ApiRoute(app *fiber.App) {
 	//api routeing
 	api := app.Group("/api")
 
-	api.Get("/post", controllers.GetDataPosts).Use(jwtware.New(jwtware.Config{
-		SigningKey: []byte("pilput"),
-	}))
-	api.Post("/post", controllers.AddDataPost).Use(jwtware.New(jwtware.Config{
-		SigningKey: []byte("pilput"),
-	}))
-
-	//auth jwt
-	api.Use(jwtware.New(jwtware.Config{
-		SigningKey: []byte("pilput"),
-	}))
+	api.Get("/post", middleware.Protected(), controllers.GetDataPosts)
+	api.Post("/post", controllers.AddDataPost)
 
 	//404 page not found
 	app.Get("/:name", func(c *fiber.Ctx) error {

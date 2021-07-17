@@ -9,7 +9,7 @@ import (
 
 func GetDataPosts(c *fiber.Ctx) error {
 	var data []migrations.Post
-	db := database.Con()
+	db := database.DB.Db
 	db.Find(&data)
 	return c.JSON(fiber.Map{
 		"success": true,
@@ -19,7 +19,7 @@ func GetDataPosts(c *fiber.Ctx) error {
 }
 
 func AddDataPost(c *fiber.Ctx) error {
-	db := database.Con()
+	db := database.DB.Db
 	input := new(models.Post)
 
 	if err := c.BodyParser(input); err != nil {
