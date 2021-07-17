@@ -1,4 +1,4 @@
-package main
+package route
 
 import (
 	"fmt"
@@ -8,7 +8,7 @@ import (
 	jwtware "github.com/gofiber/jwt/v2"
 )
 
-func SetupRoute(app *fiber.App) {
+func ApiRoute(app *fiber.App) {
 	app.Static("/", "./static")
 
 	app.Post("/login", controllers.Login)
