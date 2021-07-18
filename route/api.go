@@ -9,7 +9,6 @@ import (
 )
 
 func ApiRoute(app *fiber.App) {
-	app.Static("/", "./static")
 
 	app.Post("/login", controllers.Login)
 	//api routeing

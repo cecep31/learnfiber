@@ -24,6 +24,7 @@ func main() {
 	//routing static file
 
 	route.ApiRoute(app)
+	route.WebRoute(app)
 	app.Use(func(c *fiber.Ctx) error {
 		return c.SendStatus(404) // => 404 "Not Found"
 	})
