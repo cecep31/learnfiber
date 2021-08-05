@@ -14,8 +14,8 @@ func ApiRoute(app *fiber.App) {
 	//api routeing
 	api := app.Group("/api")
 
-	api.Get("/post", middleware.Protected(), controllers.GetDataPosts)
-	api.Post("/post", controllers.AddDataPost)
+	api.Get("/post", controllers.GetDataPosts)
+	api.Post("/post", middleware.Protected(), controllers.AddDataPost)
 
 	//404 page not found
 	app.Get("/:name", func(c *fiber.Ctx) error {
