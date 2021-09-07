@@ -1,8 +1,6 @@
 package main
 
 import (
-	"log"
-
 	"github.com/cecep31/learnfiber/database"
 	"github.com/cecep31/learnfiber/route"
 	"github.com/gofiber/fiber/v2"
@@ -29,6 +27,10 @@ func main() {
 		return c.SendStatus(404) // => 404 "Not Found"
 	})
 
-	log.Fatal(app.Listen(":3131"))
+	err := app.Listen(":3131")
+
+	if err != nil {
+		panic(err)
+	}
 
 }
