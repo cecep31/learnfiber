@@ -1,10 +1,10 @@
-package route
+package routes
 
 import (
 	"fmt"
 
-	"github.com/cecep31/learnfiber/controllers"
-	"github.com/cecep31/learnfiber/middleware"
+	"github.com/cecep31/learnfiber/app/controllers"
+	"github.com/cecep31/learnfiber/pkg/middleware"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 )

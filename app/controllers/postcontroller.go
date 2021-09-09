@@ -1,9 +1,9 @@
 package controllers
 
 import (
+	"github.com/cecep31/learnfiber/app/models"
 	"github.com/cecep31/learnfiber/database"
 	"github.com/cecep31/learnfiber/migrations"
-	"github.com/cecep31/learnfiber/models"
 	"github.com/gofiber/fiber/v2"
 )
 

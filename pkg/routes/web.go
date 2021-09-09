@@ -1,7 +1,7 @@
-package route
+package routes
 
 import (
-	"github.com/cecep31/learnfiber/controllers"
+	"github.com/cecep31/learnfiber/app/controllers"
 	"github.com/gofiber/fiber/v2"
 )
 

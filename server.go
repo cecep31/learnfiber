@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/cecep31/learnfiber/database"
-	"github.com/cecep31/learnfiber/route"
+	"github.com/cecep31/learnfiber/pkg/routes"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/gofiber/fiber/v2/middleware/recover"
@@ -21,8 +21,8 @@ func main() {
 
 	//routing static file
 
-	route.ApiRoute(app)
-	route.WebRoute(app)
+	routes.ApiRoute(app)
+	routes.WebRoute(app)
 	app.Use(func(c *fiber.Ctx) error {
 		return c.SendStatus(404) // => 404 "Not Found"
 	})
